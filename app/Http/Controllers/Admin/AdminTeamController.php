@@ -55,24 +55,33 @@ class AdminTeamController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Team $team)
     {
-        //
+        $posts = Post::all();
+        return view('admin.team.edit',['posts'=>$posts, 'team'=>$team]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Team $team)
     {
-        //
+        $request->validate([
+            'name'=>'required',
+            'age'=>'required|integer',
+        ]);
+        $team->update($request->all());
+        $team->posts()->sync($request->input('posts'));
+        return redirect()->route('team.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Team $team)
     {
-        //
+        $team->posts()->detach();
+        $team->delete();
+        return redirect()->route('team.index');
     }
 }
