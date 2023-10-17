@@ -12,7 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('stadia', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->string('country')->nullable();
+            $table->string('city')->nullable();
+            $table->integer('club_id')->nullable();
             $table->timestamps();
         });
     }

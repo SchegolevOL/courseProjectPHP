@@ -208,15 +208,15 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="../tables/data.html" class="nav-link active">
+                                <a href="{{route('post.index')}}" class="nav-link active">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>DataTables</p>
+                                    <p>Post</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="../tables/jsgrid.html" class="nav-link">
+                                <a href="{{route('team.index')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>jsGrid</p>
+                                    <p>Teams</p>
                                 </a>
                             </li>
                         </ul>

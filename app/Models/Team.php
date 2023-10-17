@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Team extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'name',
+        'age',
+        'post_id',
+    ];
+    public function posts()
+    {
+        return $this->belongsToMany(Post::class);
+    }
 }
