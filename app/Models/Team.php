@@ -11,7 +11,7 @@ class Team extends Model
     protected $fillable = [
         'name',
         'age',
-        'post_id',
+
     ];
     public function posts()
     {

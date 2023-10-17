@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Post;
 use App\Models\Team;
 use Illuminate\Http\Request;
 
@@ -25,7 +26,8 @@ class AdminTeamController extends Controller
      */
     public function create()
     {
-       return view('admin.team.create');
+        $posts = Post::all();
+       return view('admin.team.create',['posts'=>$posts]);
     }
 
     /**
@@ -33,7 +35,12 @@ class AdminTeamController extends Controller
      */
     public function store(Request $request)
     {
-        Team::query()->create($request->all());
+        $request->validate([
+            'name'=>'required',
+            'age'=>'required|integer',
+        ]);
+        $team = Team::create($request->all());
+        $team->posts()->attach($request->input('posts'));
         return redirect()->route('team.index');
     }
 

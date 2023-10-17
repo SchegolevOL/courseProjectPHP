@@ -10,7 +10,7 @@
             <div class="card-tools">
                 <div class="input-group input-group-sm" style="width: 150px;">
                     <div class="input-group-append">
-                        <a href="{{route('user.create')}}" type="submit" class="btn btn-success">
+                        <a href="{{route('team.create')}}" type="submit" class="btn btn-success">
                             Create
                         </a>
                     </div>
