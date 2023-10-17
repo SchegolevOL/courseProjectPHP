@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\MainController;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,7 +21,13 @@ Route::get('/', function () {
 })->name('home');
 
 Route::prefix('admin')->group(function () {
-   Route::get('/', [MainController::class, 'index'])->name('admin.index');
+   Route::get('/', [MainController::class, 'index'])->name('admin.index')->middleware('admin');
+   Route::resource('user', \App\Http\Controllers\Admin\AdminUserController::class);
 });
+
 Route::get('register',[UserController::class, 'create'])->name('register.create');
 Route::post('register',[UserController::class, 'store'])->name('register.store');
+Route::get('login',[UserController::class, 'loginForm'])->name('login.create');
+Route::post('login',[UserController::class, 'login'])->name('login');
+Route::get('logout',[UserController::class, 'logout'])->name('logout');
+

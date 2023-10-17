@@ -10,13 +10,14 @@
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 
     @vite(['resources/css/app.css',
-          'resources/js/app.js',
-          'resources/assets/admin/plugins/fontawesome-free/css/all.min.css',
-          'resources/assets/admin/dist/css/adminlte.min.css',
-          'resources/assets/admin/plugins/jquery/jquery.min.js',
-          'resources/assets/admin/plugins/bootstrap/js/bootstrap.bundle.min.js',
-          'resources/assets/admin/dist/js/adminlte.min.js',
-          'resources/assets/admin/dist/js/demo.js'])
+            'resources/js/app.js',
+            'resources/assets/admin/plugins/fontawesome-free/css/all.min.css',
+            'resources/assets/admin/dist/css/adminlte.min.css',
+            'resources/assets/admin/plugins/jquery/jquery.min.js',
+            'resources/assets/admin/plugins/bootstrap/js/bootstrap.bundle.min.js',
+            'resources/assets/admin/dist/js/adminlte.min.js',
+            ])
+
 </head>
 <body class="hold-transition register-page">
 <div class="register-box">
