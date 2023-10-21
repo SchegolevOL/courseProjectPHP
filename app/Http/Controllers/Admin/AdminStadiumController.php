@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Stadium;
 use Illuminate\Http\Request;
 
 class AdminStadiumController extends Controller
@@ -12,7 +13,9 @@ class AdminStadiumController extends Controller
      */
     public function index()
     {
-        //
+        $title = 'Stadium';
+        $stadia= Stadium::all();
+        return view('admin.stadium.index',['stadia'=>$stadia, 'title'=>$title]);
     }
 
     /**
@@ -20,7 +23,8 @@ class AdminStadiumController extends Controller
      */
     public function create()
     {
-        //
+
+        return view('admin.stadium.create');
     }
 
     /**

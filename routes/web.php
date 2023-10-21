@@ -22,12 +22,12 @@ Route::get('/', function () {
 
 Route::prefix('admin')->group(function () {
    Route::get('/', [MainController::class, 'index'])->name('admin.index')->middleware('admin');
-   Route::resource('user', \App\Http\Controllers\Admin\AdminUserController::class);
-   Route::resource('team', \App\Http\Controllers\Admin\AdminTeamController::class);
-   Route::resource('post', \App\Http\Controllers\Admin\AdminPostController::class);
-   Route::resource('game', \App\Http\Controllers\Admin\AdminGameController::class);
-   Route::resource('club', \App\Http\Controllers\Admin\AdminClubController::class);
-   Route::resource('stadium', \App\Http\Controllers\Admin\AdminStadiumController::class);
+   Route::resource('user', \App\Http\Controllers\Admin\AdminUserController::class)->middleware('admin');
+   Route::resource('team', \App\Http\Controllers\Admin\AdminTeamController::class)->middleware('admin');
+   Route::resource('post', \App\Http\Controllers\Admin\AdminPostController::class)->middleware('admin');
+   Route::resource('game', \App\Http\Controllers\Admin\AdminGameController::class)->middleware('admin');
+   Route::resource('club', \App\Http\Controllers\Admin\AdminClubController::class)->middleware('admin');
+   Route::resource('stadium', \App\Http\Controllers\Admin\AdminStadiumController::class)->middleware('admin');
 });
 
 Route::get('register',[UserController::class, 'create'])->name('register.create');

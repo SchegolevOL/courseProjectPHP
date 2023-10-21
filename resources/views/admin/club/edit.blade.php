@@ -13,42 +13,33 @@
             @endif
         </div>
         <div class="card-header">
-            <h3 class="card-title">User Edit</h3>
+            <h3 class="card-title">Club Edit</h3>
         </div>
         <!-- /.card-header -->
         <!-- form start -->
-        <form action="{{route('user.update', $user)}}" method="post">
+        <form action="{{route('club.update', $club)}}" method="post" enctype="multipart/form-data">
             @csrf
             @method('put')
             <div class="card-body">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Name</label>
-                    <input type="text" class="form-control" name="name" id="name" placeholder="Enter name" value="{{$user->name}}">
+                    <label for="exampleInputEmail1">Title</label>
+                    <input type="text" class="form-control" name="title" placeholder="Enter title" value="{{$club->title}}">
                 </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" name="email" placeholder="Enter email" value="{{$user->email}}">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" name="password" placeholder="Password" value="{{$user->password}}">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputFile">File input</label>
-                    <div class="input-group">
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="exampleInputFile">
-                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                        </div>
-                        <div class="input-group-append">
-                            <span class="input-group-text">Upload</span>
-                        </div>
+
+                @foreach($teams as $team)
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" name="teams[]" value="{{$team->id}} "
+                               @if($team->clubs->contains($club->id)) checked @endif>
+                        <label class="form-check-label" for="exampleCheck1">{{$team->name}}</label>
                     </div>
+                @endforeach
+
+                <div class="mb-3">
+                    <label class="form-label">Image</label>
+                    <input name ="emblem" type="file" class="form-control" value="">
+                    <div  class="form-text"></div>
                 </div>
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" name="is_admin" value="1" @if($user->is_admin==1)checked @endif>
-                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                </div>
+
             </div>
             <!-- /.card-body -->
 

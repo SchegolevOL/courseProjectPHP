@@ -219,6 +219,21 @@
                                     <p>Teams</p>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{route('stadium.index')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Stadium</p>
+                                </a>
+                            </li>
+ <li class="nav-item">
+                                <a href="{{route('club.index')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Club</p>
+                                </a>
+                            </li>
+
+
+
                         </ul>
                     </li>
                     {{--End content nav-bar--}}

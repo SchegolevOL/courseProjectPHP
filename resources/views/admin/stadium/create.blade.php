@@ -13,47 +13,30 @@
             @endif
         </div>
         <div class="card-header">
-            <h3 class="card-title">User Registration</h3>
+            <h3 class="card-title">Create Stadium</h3>
         </div>
         <!-- /.card-header -->
         <!-- form start -->
-        <form action="{{route('user.store')}}" method="post">
+        <form action="{{route('stadium.store')}}" method="post">
             @csrf
             <div class="card-body">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Name</label>
-                    <input type="text" class="form-control" name="name" id="name" placeholder="Enter name" value="{{old('name')}}">
+                    <label for="exampleInputEmail1">Country</label>
+                    <input type="text" class="form-control" name="country" placeholder="Enter country" value="{{old('country')}}">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" name="email" placeholder="Enter email" value="{{old('email')}}">
+                    <label for="exampleInputEmail1">City</label>
+                    <input type="text" class="form-control" name="city" placeholder="Enter city" value="{{old('city')}}">
                 </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" name="password" placeholder="Password">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Password confirmation</label>
-                    <input type="password" class="form-control" name="password_confirmation" placeholder="Password confirmation">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputFile">File input</label>
-                    <div class="input-group">
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="exampleInputFile">
-                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                        </div>
-                        <div class="input-group-append">
-                            <span class="input-group-text">Upload</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" name="is_admin" value="1">
-                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                </div>
-            </div>
-            <!-- /.card-body -->
+
+                   <select class="form-select" aria-label="Default select example">
+                       <option selected>Open this select menu</option>
+                       <option value="1">One</option>
+                       <option value="2">Two</option>
+                       <option value="3">Three</option>
+                   </select>
+
+
 
             <div class="card-footer">
                 <button type="submit" class="btn btn-primary">Submit</button>

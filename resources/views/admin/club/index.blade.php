@@ -10,7 +10,7 @@
             <div class="card-tools">
                 <div class="input-group input-group-sm" style="width: 150px;">
                     <div class="input-group-append">
-                        <a href="{{route('user.create')}}" type="submit" class="btn btn-success">
+                        <a href="{{route('club.create')}}" type="submit" class="btn btn-success">
                             Create
                         </a>
                     </div>
@@ -38,55 +38,57 @@
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Name</th>
-                    <th>Date</th>
-                    <th>Email</th>
-                    <th>Is Admin</th>
+                    <th>Title</th>
+                    <th>Team</th>
+                    <th>Emblem</th>
+                    <
 
                 </tr>
                 </thead>
-                @foreach($users as $user)
-                <tbody>
-                <tr>
-                    <td>{{$user->id}}</td>
-                    <td>{{$user->name}}</td>
-                    <td>{{$user->created_at}}</td>
-                    <td>{{$user->email}}</td>
-                    <td>
-                        @if($user->is_admin==1)
-                            Admin
-                        @else
-                            User
-                        @endif
+                @foreach($clubs as $club)
+                    <tbody>
+                    <tr>
+                        <td>{{$club->id}}</td>
+                        <td>{{$club->title}}</td>
+                        <td>
+                            @foreach($club->teams as $team)
+                                <label>{{$team->name}} -
+                                @foreach($team->posts as $post)
+                                    <label>{{$post->position}};</label>
+                                @endforeach</label>
+
+                            @endforeach
+                        </td>
+                        <td><img src="/public/storage/{{$club->emblem}}" class="card-img-top" alt="image not found"
+                                 style="width: 180px; height: 80px;"/></td>
+
+
+                        <td class="project-actions text-right">
+                            <a class="btn btn-primary btn-sm" href="">
+                                <i class="fas fa-folder">
+                                </i>
+                                View
+                            </a>
+                            <a class="btn btn-info btn-sm" href="{{route('club.edit',$club)}}">
+                                <i class="fas fa-pencil-alt">
+                                </i>
+                                Edit
+                            </a>
+                            <form action="{{route('club.destroy', $club)}}" method="post">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="btn btn-danger btn-sm">
+                                    <i class="fas fa-trash">
+                                    </i>
+                                    Delete
+                                </button>
+                            </form>
+                        </td>
 
                         </td>
-                    <td>
-                    <td class="project-actions text-right">
-                        <a class="btn btn-primary btn-sm" href="">
-                            <i class="fas fa-folder">
-                            </i>
-                            View
-                        </a>
-                        <a class="btn btn-info btn-sm" href="{{route('user.edit',$user)}}">
-                            <i class="fas fa-pencil-alt">
-                            </i>
-                            Edit
-                        </a>
-                        <form action="{{route('user.destroy', $user)}}" method="post">
-                            @csrf
-                            @method('delete')
-                        <button type="submit" class="btn btn-danger btn-sm">
-                            <i class="fas fa-trash">
-                            </i>
-                            Delete
-                        </button>
-                        </form>
-                    </td>
+                    </tr>
 
-                    </td>
-                </tr>
-
-                </tbody>
+                    </tbody>
                 @endforeach
             </table>
         </div>

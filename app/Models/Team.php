@@ -17,4 +17,9 @@ class Team extends Model
     {
         return $this->belongsToMany(Post::class);
     }
+
+    public function clubs()
+    {
+        return $this->belongsToMany(Club::class);
+    }
 }
